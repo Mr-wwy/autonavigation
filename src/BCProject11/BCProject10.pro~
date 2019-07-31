@@ -1,0 +1,11 @@
+TEMPLATE = subdirs
+
+SUBDIRS += \
+    Driving \
+    ShowImage \
+    UDPSender \
+    WayPoint \
+    BCManager10
+
+CONFIG += ordered
+

@@ -1,0 +1,250 @@
+; Auto-generated. Do not edit!
+
+
+(cl:in-package autonavigation-msg)
+
+
+;//! \htmlinclude RecvWayPoints.msg.html
+
+(cl:defclass <RecvWayPoints> (roslisp-msg-protocol:ros-message)
+  ((waypointnumA
+    :reader waypointnumA
+    :initarg :waypointnumA
+    :type cl:integer
+    :initform 0)
+   (Apx
+    :reader Apx
+    :initarg :Apx
+    :type (cl:vector cl:integer)
+   :initform (cl:make-array 0 :element-type 'cl:integer :initial-element 0))
+   (Apy
+    :reader Apy
+    :initarg :Apy
+    :type (cl:vector cl:integer)
+   :initform (cl:make-array 0 :element-type 'cl:integer :initial-element 0))
+   (waypointnumB
+    :reader waypointnumB
+    :initarg :waypointnumB
+    :type cl:integer
+    :initform 0)
+   (Bpx
+    :reader Bpx
+    :initarg :Bpx
+    :type (cl:vector cl:integer)
+   :initform (cl:make-array 0 :element-type 'cl:integer :initial-element 0))
+   (Bpy
+    :reader Bpy
+    :initarg :Bpy
+    :type (cl:vector cl:integer)
+   :initform (cl:make-array 0 :element-type 'cl:integer :initial-element 0)))
+)
+
+(cl:defclass RecvWayPoints (<RecvWayPoints>)
+  ())
+
+(cl:defmethod cl:initialize-instance :after ((m <RecvWayPoints>) cl:&rest args)
+  (cl:declare (cl:ignorable args))
+  (cl:unless (cl:typep m 'RecvWayPoints)
+    (roslisp-msg-protocol:msg-deprecation-warning "using old message class name autonavigation-msg:<RecvWayPoints> is deprecated: use autonavigation-msg:RecvWayPoints instead.")))
+
+(cl:ensure-generic-function 'waypointnumA-val :lambda-list '(m))
+(cl:defmethod waypointnumA-val ((m <RecvWayPoints>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader autonavigation-msg:waypointnumA-val is deprecated.  Use autonavigation-msg:waypointnumA instead.")
+  (waypointnumA m))
+
+(cl:ensure-generic-function 'Apx-val :lambda-list '(m))
+(cl:defmethod Apx-val ((m <RecvWayPoints>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader autonavigation-msg:Apx-val is deprecated.  Use autonavigation-msg:Apx instead.")
+  (Apx m))
+
+(cl:ensure-generic-function 'Apy-val :lambda-list '(m))
+(cl:defmethod Apy-val ((m <RecvWayPoints>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader autonavigation-msg:Apy-val is deprecated.  Use autonavigation-msg:Apy instead.")
+  (Apy m))
+
+(cl:ensure-generic-function 'waypointnumB-val :lambda-list '(m))
+(cl:defmethod waypointnumB-val ((m <RecvWayPoints>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader autonavigation-msg:waypointnumB-val is deprecated.  Use autonavigation-msg:waypointnumB instead.")
+  (waypointnumB m))
+
+(cl:ensure-generic-function 'Bpx-val :lambda-list '(m))
+(cl:defmethod Bpx-val ((m <RecvWayPoints>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader autonavigation-msg:Bpx-val is deprecated.  Use autonavigation-msg:Bpx instead.")
+  (Bpx m))
+
+(cl:ensure-generic-function 'Bpy-val :lambda-list '(m))
+(cl:defmethod Bpy-val ((m <RecvWayPoints>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader autonavigation-msg:Bpy-val is deprecated.  Use autonavigation-msg:Bpy instead.")
+  (Bpy m))
+(cl:defmethod roslisp-msg-protocol:serialize ((msg <RecvWayPoints>) ostream)
+  "Serializes a message object of type '<RecvWayPoints>"
+  (cl:let* ((signed (cl:slot-value msg 'waypointnumA)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 4294967296) signed)))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) unsigned) ostream)
+    )
+  (cl:let ((__ros_arr_len (cl:length (cl:slot-value msg 'Apx))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) __ros_arr_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) __ros_arr_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) __ros_arr_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) __ros_arr_len) ostream))
+  (cl:map cl:nil #'(cl:lambda (ele) (cl:let* ((signed ele) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 4294967296) signed)))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) unsigned) ostream)
+    ))
+   (cl:slot-value msg 'Apx))
+  (cl:let ((__ros_arr_len (cl:length (cl:slot-value msg 'Apy))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) __ros_arr_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) __ros_arr_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) __ros_arr_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) __ros_arr_len) ostream))
+  (cl:map cl:nil #'(cl:lambda (ele) (cl:let* ((signed ele) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 4294967296) signed)))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) unsigned) ostream)
+    ))
+   (cl:slot-value msg 'Apy))
+  (cl:let* ((signed (cl:slot-value msg 'waypointnumB)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 4294967296) signed)))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) unsigned) ostream)
+    )
+  (cl:let ((__ros_arr_len (cl:length (cl:slot-value msg 'Bpx))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) __ros_arr_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) __ros_arr_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) __ros_arr_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) __ros_arr_len) ostream))
+  (cl:map cl:nil #'(cl:lambda (ele) (cl:let* ((signed ele) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 4294967296) signed)))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) unsigned) ostream)
+    ))
+   (cl:slot-value msg 'Bpx))
+  (cl:let ((__ros_arr_len (cl:length (cl:slot-value msg 'Bpy))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) __ros_arr_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) __ros_arr_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) __ros_arr_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) __ros_arr_len) ostream))
+  (cl:map cl:nil #'(cl:lambda (ele) (cl:let* ((signed ele) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 4294967296) signed)))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) unsigned) ostream)
+    ))
+   (cl:slot-value msg 'Bpy))
+)
+(cl:defmethod roslisp-msg-protocol:deserialize ((msg <RecvWayPoints>) istream)
+  "Deserializes a message object of type '<RecvWayPoints>"
+    (cl:let ((unsigned 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:slot-value msg 'waypointnumA) (cl:if (cl:< unsigned 2147483648) unsigned (cl:- unsigned 4294967296))))
+  (cl:let ((__ros_arr_len 0))
+    (cl:setf (cl:ldb (cl:byte 8 0) __ros_arr_len) (cl:read-byte istream))
+    (cl:setf (cl:ldb (cl:byte 8 8) __ros_arr_len) (cl:read-byte istream))
+    (cl:setf (cl:ldb (cl:byte 8 16) __ros_arr_len) (cl:read-byte istream))
+    (cl:setf (cl:ldb (cl:byte 8 24) __ros_arr_len) (cl:read-byte istream))
+  (cl:setf (cl:slot-value msg 'Apx) (cl:make-array __ros_arr_len))
+  (cl:let ((vals (cl:slot-value msg 'Apx)))
+    (cl:dotimes (i __ros_arr_len)
+    (cl:let ((unsigned 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:aref vals i) (cl:if (cl:< unsigned 2147483648) unsigned (cl:- unsigned 4294967296)))))))
+  (cl:let ((__ros_arr_len 0))
+    (cl:setf (cl:ldb (cl:byte 8 0) __ros_arr_len) (cl:read-byte istream))
+    (cl:setf (cl:ldb (cl:byte 8 8) __ros_arr_len) (cl:read-byte istream))
+    (cl:setf (cl:ldb (cl:byte 8 16) __ros_arr_len) (cl:read-byte istream))
+    (cl:setf (cl:ldb (cl:byte 8 24) __ros_arr_len) (cl:read-byte istream))
+  (cl:setf (cl:slot-value msg 'Apy) (cl:make-array __ros_arr_len))
+  (cl:let ((vals (cl:slot-value msg 'Apy)))
+    (cl:dotimes (i __ros_arr_len)
+    (cl:let ((unsigned 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:aref vals i) (cl:if (cl:< unsigned 2147483648) unsigned (cl:- unsigned 4294967296)))))))
+    (cl:let ((unsigned 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:slot-value msg 'waypointnumB) (cl:if (cl:< unsigned 2147483648) unsigned (cl:- unsigned 4294967296))))
+  (cl:let ((__ros_arr_len 0))
+    (cl:setf (cl:ldb (cl:byte 8 0) __ros_arr_len) (cl:read-byte istream))
+    (cl:setf (cl:ldb (cl:byte 8 8) __ros_arr_len) (cl:read-byte istream))
+    (cl:setf (cl:ldb (cl:byte 8 16) __ros_arr_len) (cl:read-byte istream))
+    (cl:setf (cl:ldb (cl:byte 8 24) __ros_arr_len) (cl:read-byte istream))
+  (cl:setf (cl:slot-value msg 'Bpx) (cl:make-array __ros_arr_len))
+  (cl:let ((vals (cl:slot-value msg 'Bpx)))
+    (cl:dotimes (i __ros_arr_len)
+    (cl:let ((unsigned 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:aref vals i) (cl:if (cl:< unsigned 2147483648) unsigned (cl:- unsigned 4294967296)))))))
+  (cl:let ((__ros_arr_len 0))
+    (cl:setf (cl:ldb (cl:byte 8 0) __ros_arr_len) (cl:read-byte istream))
+    (cl:setf (cl:ldb (cl:byte 8 8) __ros_arr_len) (cl:read-byte istream))
+    (cl:setf (cl:ldb (cl:byte 8 16) __ros_arr_len) (cl:read-byte istream))
+    (cl:setf (cl:ldb (cl:byte 8 24) __ros_arr_len) (cl:read-byte istream))
+  (cl:setf (cl:slot-value msg 'Bpy) (cl:make-array __ros_arr_len))
+  (cl:let ((vals (cl:slot-value msg 'Bpy)))
+    (cl:dotimes (i __ros_arr_len)
+    (cl:let ((unsigned 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:aref vals i) (cl:if (cl:< unsigned 2147483648) unsigned (cl:- unsigned 4294967296)))))))
+  msg
+)
+(cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<RecvWayPoints>)))
+  "Returns string type for a message object of type '<RecvWayPoints>"
+  "autonavigation/RecvWayPoints")
+(cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql 'RecvWayPoints)))
+  "Returns string type for a message object of type 'RecvWayPoints"
+  "autonavigation/RecvWayPoints")
+(cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<RecvWayPoints>)))
+  "Returns md5sum for a message object of type '<RecvWayPoints>"
+  "cfc84bf91694d7cb048a755fe64d02fa")
+(cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'RecvWayPoints)))
+  "Returns md5sum for a message object of type 'RecvWayPoints"
+  "cfc84bf91694d7cb048a755fe64d02fa")
+(cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<RecvWayPoints>)))
+  "Returns full string definition for message of type '<RecvWayPoints>"
+  (cl:format cl:nil "#对应结构体Autonavigation_RecvWayPoints~%~%int32       waypointnumA         #路点个数~%int32[]     Apx                  #路点X坐标，单位cm~%int32[]     Apy                  #路点Y坐标，单位cm~%int32       waypointnumB         #路点个数~%int32[]     Bpx                  #路点X坐标，单位cm~%int32[]     Bpy                  #路点Y坐标，单位cm~%~%~%"))
+(cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'RecvWayPoints)))
+  "Returns full string definition for message of type 'RecvWayPoints"
+  (cl:format cl:nil "#对应结构体Autonavigation_RecvWayPoints~%~%int32       waypointnumA         #路点个数~%int32[]     Apx                  #路点X坐标，单位cm~%int32[]     Apy                  #路点Y坐标，单位cm~%int32       waypointnumB         #路点个数~%int32[]     Bpx                  #路点X坐标，单位cm~%int32[]     Bpy                  #路点Y坐标，单位cm~%~%~%"))
+(cl:defmethod roslisp-msg-protocol:serialization-length ((msg <RecvWayPoints>))
+  (cl:+ 0
+     4
+     4 (cl:reduce #'cl:+ (cl:slot-value msg 'Apx) :key #'(cl:lambda (ele) (cl:declare (cl:ignorable ele)) (cl:+ 4)))
+     4 (cl:reduce #'cl:+ (cl:slot-value msg 'Apy) :key #'(cl:lambda (ele) (cl:declare (cl:ignorable ele)) (cl:+ 4)))
+     4
+     4 (cl:reduce #'cl:+ (cl:slot-value msg 'Bpx) :key #'(cl:lambda (ele) (cl:declare (cl:ignorable ele)) (cl:+ 4)))
+     4 (cl:reduce #'cl:+ (cl:slot-value msg 'Bpy) :key #'(cl:lambda (ele) (cl:declare (cl:ignorable ele)) (cl:+ 4)))
+))
+(cl:defmethod roslisp-msg-protocol:ros-message-to-list ((msg <RecvWayPoints>))
+  "Converts a ROS message object to a list"
+  (cl:list 'RecvWayPoints
+    (cl:cons ':waypointnumA (waypointnumA msg))
+    (cl:cons ':Apx (Apx msg))
+    (cl:cons ':Apy (Apy msg))
+    (cl:cons ':waypointnumB (waypointnumB msg))
+    (cl:cons ':Bpx (Bpx msg))
+    (cl:cons ':Bpy (Bpy msg))
+))

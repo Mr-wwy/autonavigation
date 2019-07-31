@@ -1,0 +1,13 @@
+#对应结构体
+
+uint32     unique_key          #自主行驶载车唯一标识，用于区分载车的id
+uint32     gps_week            #GPS周
+uint64     gps_millisecond     #取GPS周的毫秒级时间    
+float64	   longitude	       #经度，单位为度       
+float64	   laltitude           #纬度，单位为度 
+uint8      gps_reserve1        #预留
+uint8      gps_reserve2
+uint8      gps_reserve3
+uint8      gps_reserve4
+uint8      gps_reserve5
+uint8      gps_reserve6

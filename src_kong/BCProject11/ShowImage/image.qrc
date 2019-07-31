@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>picture/black.jpg</file>
+        <file>picture/camera.png</file>
+        <file>picture/camera_close.png</file>
+        <file>picture/camera_open.png</file>
+        <file>picture/video.png</file>
+        <file alias="aim">picture/Aim.png</file>
+    </qresource>
+</RCC>

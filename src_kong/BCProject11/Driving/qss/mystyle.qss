@@ -1,0 +1,32 @@
+/****************标签*******************/
+QLabel{
+   background:transparent;
+   color:rgba(10, 235, 5, 230);/*字体颜色*/
+}
+
+/****************按钮部件*******************/
+QPushButton{
+     min-width:35px;
+     min-height:25px;
+     background-color: rgba(100, 225, 100, 50);/*背景色*/
+     border-style: solid; /*边框样式*/
+     border-width: 2px;  /*边框宽度为2像素*/
+     border-radius: 8px; /*边框圆角半径*/
+     border-color: rgba(255, 225, 125, 180);/*边框颜色*/
+     color:rgba(0, 0, 0, 100);/*字体颜色*/
+}
+
+ /*鼠标悬停在按钮上时*/
+QPushButton:hover{
+        background-color:rgba(100,255,100, 120);/*背景色*/
+        color:rgba(0, 0, 0, 200);
+}
+
+/*按钮被按下时*/
+QPushButton:pressed {
+     background-color:rgba(100,255,100, 220);/*背景色*/
+     color:rgba(0, 0, 0, 200);
+}
+
+
+

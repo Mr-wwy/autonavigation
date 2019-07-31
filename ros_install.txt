@@ -1,0 +1,343 @@
+
+************ 安装ROS ************
+--需以网站为准，以下仅供参考
+Ubuntu使用14.04 版本，安装indigo
+
+根据ros网站提示，按部就班做 http://wiki.ros.org/indigo/Installation/Ubuntu
+
+1.安装源
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+
+2.增加key
+sudo apt-key adv --keyserver hkp://pool.sks-keyservers.net --recv-key 0xB01FA116
+
+3.更新
+sudo apt-get update
+
+4.安装
+sudo apt-get install ros-indigo-desktop-full
+
+5.解决依赖
+sudo rosdep init
+(可能会出错，rosdep init ERROR: cannot download default sources list from ...
+解决方案：（需要sudo使用-E来保留环境变量配置，如之前设置过的export http_proxy=xxxx:yyyy）
+sudo -E rosdep init)
+
+rosdep update
+
+6.安装rosinstall,便利的工具
+sudo apt-get install python-rosinstall
+
+如果发生以下错误：	查看软件与更新的其他软件是否添加了其他源
+	您可能需要运行“apt-get -f install”来纠正下列错误：
+	下列软件包有未满足的依赖关系：
+	 python-rosdep : 依赖: python-catkin-pkg (>= 0.4.0) 但是它将不会被安装
+		             依赖: python-rosdistro (>= 0.7.0) 但是它将不会被安装
+	 python-rospkg : 依赖: python-catkin-pkg 但是它将不会被安装
+	 python-rospkg-modules : 依赖: python-catkin-pkg 但是它将不会被安装
+	 ros-indigo-catkin : 依赖: python-catkin-pkg (> 0.2.9) 但是它将不会被安装
+	 ros-indigo-desktop-full : 依赖: ros-indigo-desktop 但是它将不会被安装
+		                       依赖: ros-indigo-perception 但是它将不会被安装
+		                       依赖: ros-indigo-simulators 但是它将不会被安装
+		                       依赖: ros-indigo-urdf-tutorial 但是它将不会被安装
+	 ros-indigo-rospack : 依赖: python-catkin-pkg 但是它将不会被安装
+	E: 有未能满足的依赖关系。请尝试不指明软件包的名字来运行“apt-get -f install”(也可以指定一个解决办法)。
+
+
+
+--安装源码
+1.--安装rosinstall_generator
+sudo apt-get install python-rosdep python-rosinstall-generator python-wstool python-rosinstall build-essential
+
+2.
+rosinstall_generator desktop_full --rosdistro indigo --deps --wet-only --tar > indigo-desktop-full-wet.rosinstall
+
+3.--疑似用svn更新了代码
+wstool init -j8 src indigo-desktop-full-wet.rosinstall
+
+4.--更新依赖的库
+rosdep install --from-paths src --ignore-src --rosdistro indigo -y
+
+
+
+装好后，如果roscore 报以下错误	可能是装ros之前装的opencv影响的
+	[rosout-1] process has died [pid 3751, exit code -6, cmd /opt/ros/jade/lib/rosout/rosout __name:=rosout __log:=/home/odroid/.ros/log/9cdba11a-3419-11e1-a50e-36e66a0e97b1/rosout-1.log].
+log file: /home/odroid/.ros/log/9cdba11a-3419-11e1-a50e-36e66a0e97b1/rosout-1*.log
+
+
+
+
+************  ubuntu 搭建ROS工作环境  ************
+
+1.sudo ufw disable 关闭防火墙
+
+2.sudo apt-get update 更新源列表
+
+3.sudo apt-get install openssh-sftp-server 安装ssh server
+
+#sudo apt-get dist-upgrade  更新系统及软件
+
+#sudo update-manager -d 
+
+4.sudo apt-get remove vim-common    卸载自带的vi，（解决方向键乱码的问题）
+  sudo apt-get install vim
+
+5.sudo apt-get install sysstat 安装iostat等查看系统资源的工具
+
+
+************ 创建ROS工作环境 begin ************
+1.在用户主目录下执行mkdir -p ~/ros_autonavigation_ws/src
+
+
+/*
+将下面的加入到vim ~/.bashrc 后面
+
+source /opt/ros/indigo/setup.bash
+
+export ROS_PACKAGE_PATH=~/ros_autonavigation_ws/src:$ROS_PACKAGE_PATH
+export ROS_MASTER_URI=http://localhost:11311    #当在本地调试时，就用localhost；当联机调试时，用roscore所在机器的hostname。
+如果需要使用qt调试，就要将这条加入到vim ~/.profile里
+#export ROS_IP=172.23.100.99                     #填你自己机器的ip地址
+#export ROS_HOSTNAME=wh-Ubuntu                   #填你自己机器的hostname
+export ROS_LOG_DIR=~/log                        #设置ros的日志文件目录
+
+#ulimit  -c unlimited
+alias bin='cd ~/ros_autonavigation_ws/bin'
+alias src='cd ~/ros_autonavigation_ws/src/autonavigation/src'
+
+
+在vim /etc/hosts中添加
+
+172.23.100.10   node1
+172.23.100.20   node2
+172.23.100.30   node3
+172.23.100.40   node4
+172.23.100.50   node5
+172.23.100.60   node6
+172.23.100.70   node7
+
+在/etc/hostname 中修改主机名
+
+ln -s ~/ros_autonavigation_ws/bin bin       #ln -s 软链接(符号链接)
+
+*/
+
+
+
+2.cd ~/ros_autonavigation_ws/src
+3.catkin_init_workspace
+4.cd ~/ros_autonavigation_ws
+5.catkin_make
+6.cd  ~/ros_autonavigation_ws/src
+7.roscreate-pkg autonavigation std_msgs geometry_msgs roscpp
+8.cd ~/ros_autonavigation_ws/src/autonavigation
+9.编辑CMakeLists.txt文件，将rosbuild_genmsg()前面的"#"号放开
+    将提供的autonavigation下，msg、src、include下的头文件拷贝到新建的autonavigation下
+10.rosmake autonavigation
+
+
+
+约定： 
+a.ros_autonavigation_ws 是ros的workspace，在用户主目录下
+b.autonavigation 为ros下的一个package，是我们所有程序的主目录
+c.autonavigation 目录说明：
+                bin       -- 可执行文件路径
+                build    
+                include   -- 公共头文件路径
+                lib
+                msg       -- 公共msg定义
+                msg_gen   -- 公共msg生成的.h头文件，不要人为干预
+                src       -- 源程序根目录
+
+
+
+
+将下面的加入到vim ~/.bashrc 后面
+
+source /opt/ros/indigo/setup.bash
+
+export ROS_PACKAGE_PATH=~/ros_autonavigation_ws/src:$ROS_PACKAGE_PATH
+export ROS_MASTER_URI=http://localhost:11311    #当在本地调试时，就用localhost；当联机调试时，用roscore所在机器的hostname。如果需要使用qt调试，就要将这条加入到vim ~/.profile里
+#export ROS_IP=172.23.100.99                     #填你自己机器的ip地址
+#export ROS_HOSTNAME=wh-Ubuntu                   #填你自己机器的hostname
+export ROS_LOG_DIR=~/log                        #设置ros的日志文件目录
+
+#ulimit  -c unlimited
+alias bin='cd ~/ros_autonavigation_ws/bin'
+alias src='cd ~/ros_autonavigation_ws/src/autonavigation/src'
+
+
+在vim /etc/hosts中添加
+
+172.23.100.10   node1
+172.23.100.20   node2
+172.23.100.30   node3
+172.23.100.40   node4
+172.23.100.50   node5
+172.23.100.60   node6
+172.23.100.70   node7
+
+在vim /etc/hostname 中修改主机名
+
+ln -s ~/ros_autonavigation_ws/bin bin
+
+************ ros 编码注意事项 ************
+
+ros::ok()有针对SIGINT的处理，但有时候不管用（原因是ros::start()没有调用，暂不明确为什么会有这个现象）。解决办法：
+1.#include "CommonFunc.h"    #该文件位于autonavigation/include
+2.在main函数开始处，调用autonavigation::init();
+3.将ros::ok()的判断条件改为ros::ok() && autonavigation::ok()
+
+ros::init_options::NoSigintHandler
+
+************ 创建ROS工作环境 end ************
+
+5.自识别usb设备
+hexdump ttyUSB0 --十六进制查看器
+
+lsusb
+/etc/udev/udev.conf udev_rules="/etc/udev/rules.d"
+
+/etc/udev/rules.d/70-sbg-usb.rules 下新建一个文件
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6001", OWNER="root",GROUP="root", MODE="0666" 
+
+sudo udevadm control --reload
+
+udevadm info -a /dev/ttyUSB0
+
+6.配置开机自启动，在dash 中搜索gnome-session
+
+/etc/hostname
+
+
+//判断roscore是否启动
+读环境变量ROS_MASTER_URI，解析出host的ip地址和端口，然后用tcp连接上去，如果连接成功就认为roscore启动了？
+
+=============================================
+1.catkin_init_workspace    -- 初始化 workspace, in src 目录 
+
+2.catkin_make    -- in workspace
+
+3.roscreate-pkg    --crate pkg
+roscreate-pkg autonavigation std_msgs geometry_msgs roscpp
+
+
+=============================================
+1.ROS_HOSTNAME
+
+2.ROS_MASTER_URI    -- /opt/ros/indigo/etc/catkin/profile.d/10.roslaunch.sh
+
+3.ROS_IP
+
+4.ROS_LOG_DIR    --ros写日志文件的目录
+
+5.ROS_ROOT    --ros 安装目录
+
+6.ROS_HOME   --默认情况下，ros将数据写到~/.ros，如果要修改，就设置这个环境变量
+
+7.ROS_LOCATIONS    --
+
+8.ROS_WORKSPACE
+
+9.ROS_NAMESPACE
+
+10.ROS_TEST_RESULTS_DIR    --测试数据结果存放目录
+
+
+vi /etc/sysctl.d/10-ptrace.conf    --qt调试，设置为1
+
+==============安装 velodyne 驱动============
+
+sudo apt-get install ros-indigo-velodyne
+--http://blog.csdn.net/littlethunder/article/details/51920681
+
+mkdir -p catkin_velodyne/src  
+cd catkin_velodyne/src  
+git clone https://github.com/ros-drivers/velodyne.git  
+cd ..  
+rosdep install --from-paths src --ignore-src --rosdistro indigo -y  
+catkin_make  
+source devel/setup.bash 
+
+
+
+============== nodelet  ==========
+
+
+
+
+
+
+============== ros msg 数据类型 ================
+int8, int16, int32, int64 (plus uint*)
+float32, float64
+string
+time, duration
+other msg files
+variable-length array[] and fixed-length array[C] 
+
+
+
+============= rosbag  记录数据=================
+1. mkdir -p ~/Data
+2. cd ~/Data
+3.rosbag record vlp16_scan
+
+rosbag info <bagfile>    -- 查看bag文件内容
+rosbag play <bagfile>    -- 回放文件
+
+
+=============ros 手册 ========================
+
+Using rqt_console and roslaunch 
+
+rqt_console --日志查看
+roslaunch  --根据lanuch文件启动节点
+
+roslaunch [package] [filename.launch]
+
+<launch>
+
+  <group ns="turtlesim1">                                             --根据namespace 区分，nodename可以重复了。
+    <node pkg="turtlesim" name="sim" type="turtlesim_node"/>
+  </group>
+
+  <group ns="turtlesim2">
+    <node pkg="turtlesim" name="sim" type="turtlesim_node"/>
+  </group>
+
+  <node pkg="turtlesim" name="mimic" type="mimic">
+    <remap from="input" to="turtlesim1/turtle1"/>
+    <remap from="output" to="turtlesim2/turtle1"/>
+  </node>
+
+</launch>
+
+
+roswtf --ros自检
+
+Roslaunch tips for large projects
+
+.xml 
+
+.yaml    --支持复杂的数据结构
+
+
+
+
+=============   ros_record   =============
+
+rosbag record --split --size=1024 /chatter  --MB
+rosbag record -j /chatter    --bz2
+rosbag record --lz4 /chatter    --lz4
+
+
+
+=============       rcs      =============
+先装java
+./configure --enable-codegen-jar
+sudo make install
+
+头文件所在目录：/usr/local/include
+库文件所在目录：/usr/local/lib
+java -jar /usr/local/bin/CodeGenCmdLine.jar NMLmsgExn.hh -o NMLmsgExn.cc

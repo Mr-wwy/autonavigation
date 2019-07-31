@@ -1,0 +1,8 @@
+float64 DesiredCurvature
+float64 DesiredVelocity
+int32 VehicleCommand
+float64 YError
+float64 HeadingError
+int32 ControlMode
+int32 SteerEnable
+int32 BrakeFuelEnable

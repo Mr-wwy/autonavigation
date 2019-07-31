@@ -1,0 +1,96 @@
+QLineEdit{
+    border-width: 2px;
+    border-style: solid;
+    /*border-color: darkblue;*/
+}
+
+QLineEdit:disabled{
+    background: rgba(192,192,192,30%);
+}
+
+QPushButton{
+border:2px solid #8f8f91;
+border-radius:6px;
+background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+stop:0#f6f7fa, stop: 1 #dadbde);
+min-width:80px;
+}
+
+QPushButton:hover{
+  background-color: qconicalgradient(cx:0.5, cy:0.522909, angle:179.9, stop:0.494318 rgba(181, 225, 250, 255), stop:0.5 rgba(222, 242, 251, 255));
+  border-radius:5px;
+  border: 1px solid #3C80B1;  
+}
+
+QPushButton:pressed {
+background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+stop:0#dadbde, stop: 1 #f6f7fa);
+}
+
+QPushButton:flat {
+border: none;/* no border for a flat push button */
+}
+
+QTreeView,QTableView,QTableWidget{
+background-color: rgba(250,250,115,30%);
+alternate-background-color: rgba(141,163,215,30%);
+}
+
+
+QTreeView,QTableView,QTableWidget{
+show-decoration-selected:1;
+}
+
+
+QTreeView,QTableView,QTableWidget::item {
+border:1px solid #d9d9d9;
+border-top-color: transparent;
+border-bottom-color: transparent;
+}
+
+/*
+QTreeView,QTableWidget::item:hover {
+background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0#e7effd, stop: 1 #cbdaf1);     //和背景色会产生冲突
+border:1px solid #bfcde4;
+}
+
+
+QTreeView,QTableWidget::item:selected {
+border:1px solid #567dbc;
+}
+
+
+QTreeView,QTableWidget::item:selected:active{
+background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0#6ea1f1, stop: 1 #567dbc);     //和背景色会产生冲突
+}
+
+
+QTreeView,QTableWidget::item:selected:!active {
+background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0#6b9be8, stop: 1 #577fbf);     //和背景色会产生冲突
+}
+
+*/
+
+/*
+QTreeView::branch {
+background: palette(base);
+}
+
+
+QTreeView::branch:closed:has-children:has-siblings {
+background: pink;
+}
+
+QTreeView::branch:has-children:!has-siblings:closed {
+background: grey;
+}
+
+
+QTreeView::branch:open:has-children:has-siblings {
+background: magenta;
+}
+
+QTreeView::branch:open:has-children:!has-siblings {
+background: green;
+}
+*/

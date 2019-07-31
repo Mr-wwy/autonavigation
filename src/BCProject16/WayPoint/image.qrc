@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/celiang.png</file>
+        <file>image/file.png</file>
+        <file>image/floder.png</file>
+        <file>image/ftp.png</file>
+        <file>image/get.png</file>
+        <file>image/help.png</file>
+        <file>image/marker.png</file>
+        <file>image/put.png</file>
+        <file>image/rotateleft.png</file>
+        <file>image/rotateright.png</file>
+        <file>image/scale.png</file>
+        <file>image/scale_end.png</file>
+        <file>image/zhinan.png</file>
+        <file>image/zoomin.png</file>
+        <file>image/zoomout.png</file>
+        <file>image/compass.png</file>
+        <file>image/compass1.png</file>
+        <file>image/way.png</file>
+    </qresource>
+</RCC>

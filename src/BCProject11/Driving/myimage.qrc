@@ -1,0 +1,26 @@
+<RCC>
+    <qresource prefix="/KM">
+        <file>image/BJ.jpg</file>
+        <file>image/fdj.png</file>
+        <file>image/Km_background.png</file>
+        <file>image/MPH.png</file>
+        <file>image/Point.png</file>
+        <file>image/pointhover.png</file>
+        <file>image/SS.png</file>
+        <file>image/SW.png</file>
+        <file>image/XH0.png</file>
+        <file>image/XH1.png</file>
+        <file>image/XH2.png</file>
+        <file>image/XH3.png</file>
+        <file>image/XH4.png</file>
+        <file>image/YL.png</file>
+        <file>image/ZSB.png</file>
+        <file>image/Automatic_drive.jpg</file>
+        <file>image/circle_green.svg</file>
+        <file>image/circle_grey.svg</file>
+        <file>image/circle_red.svg</file>
+        <file>image/Circle_Green.png</file>
+        <file>image/Circle_Grey.png</file>
+        <file>image/Circle_Red.png</file>
+    </qresource>
+</RCC>

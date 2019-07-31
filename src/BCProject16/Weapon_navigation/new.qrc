@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/new">
+        <file alias="black">picture/black.jpg</file>
+        <file alias="close">picture/camera_close.png</file>
+        <file alias="open">picture/camera_open.png</file>
+        <file alias="video">picture/video.png</file>
+        <file alias="1">picture/12.jpg</file>
+        <file alias="aim">picture/Aim.png</file>
+        <file alias="aim2">picture/Aim2.png</file>
+        <file alias="aim3">picture/aim3.png</file>
+    </qresource>
+</RCC>

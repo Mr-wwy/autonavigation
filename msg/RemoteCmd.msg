@@ -1,0 +1,6 @@
+int32 RemoteMode
+int32 RemoteSteerEnable
+int32 RemoteBrakeFuelEnable
+float32 RemoteSteerAngle
+float32 RemoteSpeed
+int32 RemoteTransPos

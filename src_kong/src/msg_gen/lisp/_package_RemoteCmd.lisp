@@ -1,0 +1,14 @@
+(cl:in-package autonavigation-msg)
+(cl:export '(REMOTEMODE-VAL
+          REMOTEMODE
+          REMOTESTEERENABLE-VAL
+          REMOTESTEERENABLE
+          REMOTEBRAKEFUELENABLE-VAL
+          REMOTEBRAKEFUELENABLE
+          REMOTESTEERANGLE-VAL
+          REMOTESTEERANGLE
+          REMOTESPEED-VAL
+          REMOTESPEED
+          REMOTETRANSPOS-VAL
+          REMOTETRANSPOS
+))
